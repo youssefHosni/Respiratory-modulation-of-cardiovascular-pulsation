@@ -4,4 +4,5 @@
 main_path= 
 input_file=
 
+cd /working_dir
 bash main.sh -m $main_path -i $input_file 
