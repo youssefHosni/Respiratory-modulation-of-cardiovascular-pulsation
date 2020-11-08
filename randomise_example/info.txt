@@ -1,0 +1,48 @@
+you have design.con file with the following content:
+
+/NumWaves 2
+/NumPoints 2
+/Matrix
+
+1 -1
+-1 1
+
+
+In practice this sampens that you have two groups, and checking for two contrasts: if A-B>0 (i.e. A>B) or -A+B>0 (i.e. A<B).
+
+
+ou define the groups in the design.mat text file:
+
+/NumWaves 2
+/NumPoints [N+M] % write actual number here
+/Matrix
+1 0
+1 0
+1 0
+1 0
+1 0
+1 0
+1 0
+1 0
+1 0
+
+...
+
+1 0 % N times, since group A (alz in example) has N elements
+0 1
+0 1
+0 1
+...
+0 1 % M times, since group B (ctrl in example) has M elements
+
+
+
+
+
+
+fslmaths /data/fmri/Youssef/codes/analysis/randmoise/flow_X_ins_exp_controls/stat_CV_OULU_10k_tfce_corrp_tstat1.nii.gz -thr 0.999 -bin /data/fmri/Youssef/codes/analysis/randmoise/flow_X_ins_exp_controls/stat1_bin.nii.gz
+
+
+ After extracting the files, you should check those two files  stat_CV_OULU_10k_tfce_corrp_tstat1.nii.gz and stat_CV_OULU_10k_tfce_corrp_tstat2.nii.gz and see the threshold to be (1-p) which is 
+1-1/n so this is the min threshold to one and then you can check with fsleyes the points that are in this range are the significant point which sampen that they are significant poitns.
+
